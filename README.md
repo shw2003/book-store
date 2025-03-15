@@ -26,7 +26,7 @@ This project is a **MERN Stack CRUD Application** that allows users to **add, up
 ---
 
 ## 🔹 Folder Structure
-
+```
 /backend
 │-- connection/conn.js       # MongoDB connection setup
 │-- models/book.models.js    # Mongoose Schema for Books
@@ -48,12 +48,14 @@ This project is a **MERN Stack CRUD Application** that allows users to **add, up
 
 ## 🔹 How It Works
 ### 1️⃣ Start the Backend:
+```
 cd backend
 npm install
 node app.js   # or nodemon app.js
 ```
 
 ### 2️⃣ Start the Frontend:
+```
 cd frontend
 npm install
 npm start
@@ -70,6 +72,14 @@ npm start
 | DELETE | `/api/v1/delete/:id`    | Delete a book    |
 
 ---
+
+## 🔹 Future Enhancements
+- 🚀 **User Authentication** – Add login/logout functionality.
+- 🚀 **Image Uploads** – Allow users to upload book images.
+- 🚀 **Search & Filter** – Improve the browsing experience.
+
+---
+
 
 ![image](https://github.com/user-attachments/assets/91fc7cdd-b7a1-4ed3-85f4-355493453925)
 
