@@ -15,6 +15,23 @@ router.post("/add", async (req, res) => {
   }
 });
 
+router.get("/getAllBooks", async (req, res) => {
+  try {
+    const books = await bookModel.find(); // Fetch all books from DB
+
+    if (books.length === 0) {
+      return res.status(404).json({ message: "No books found" });
+    }
+
+    res.status(200).json(books);
+  } catch (error) {
+    console.error("Error fetching books:", error);
+    res
+      .status(500)
+      .json({ message: "Internal Server Error", error: error.message });
+  }
+});
+
 router.put("/update/:id", async (req, res) => {
   try {
     const bookId = req.params.id;

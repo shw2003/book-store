@@ -1,0 +1,15 @@
+.Home-Page {
+  width: 100%;
+  min-height: 91.5vh;
+  max-height: auto;
+}
+
+.homeimg {
+  height: 650px;
+  width: 400px;
+}
+
+.viewbook:hover {
+  background-color: white;
+  color: black;
+}
