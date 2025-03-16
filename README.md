@@ -87,4 +87,4 @@ npm start
 
 ![image](https://github.com/user-attachments/assets/d2e80df5-a5c8-434a-90c3-6272888bfa5c)
 
-![image](https://github.com/user-attachments/assets/25c6b91e-1b17-49be-892c-c85d101aea07)
+![image](https://github.com/user-attachments/assets/5514e882-01da-43fc-85d0-5dcb1d0247ba)
