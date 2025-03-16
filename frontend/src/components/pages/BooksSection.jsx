@@ -33,9 +33,14 @@ const BooksSection = ({ dataBook, setDataBook }) => {
             <div className="card bg-secondary p-3 my-2">
               <img
                 src={book.image}
-                alt={book.bookname}
-                className="card-img-top"
-                style={{ height: "200px", objectFit: "cover" }}
+                alt="Book Preview"
+                className="img-fluid"
+                style={{
+                  maxHeight: "200px",
+                  objectFit: "cover",
+                  display: book.image ? "block" : "none",
+                }}
+                loading="lazy"
               />
               <div className="card-body">
                 <h6 className="card-title">{book.bookname}</h6>

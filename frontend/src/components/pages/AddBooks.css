@@ -1,0 +1,61 @@
+.add-books-page {
+  background: url("https://images.unsplash.com/photo-1512820790803-83ca734da794")
+    no-repeat center center/cover;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.7); /* Dark overlay for better readability */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.book-form {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 10px;
+  width: 400px;
+  color: white;
+  box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.form-control {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.btn-primary {
+  background-color: #ff6f61;
+  border: none;
+  font-size: 18px;
+  padding: 10px;
+}
+
+.btn-primary:hover {
+  background-color: #e65c54;
+}
+
+h3 {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
