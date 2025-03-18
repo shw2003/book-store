@@ -6,8 +6,8 @@ const router = express.Router();
 
 
 const razorpay = new Razorpay({
-  key_id: "rzp_test_RwAjwTsADH3ZKy",
-  key_secret: "OftLUMb8ocexj24WMFgrW8Zj",
+  key_id: "key_id",
+  key_secret: "key_secret",
 });
 
 
@@ -36,7 +36,7 @@ router.post("/verify-payment", (req, res) => {
       req.body;
 
     const generatedSignature = crypto
-      .createHmac("sha256", "OftLUMb8ocexj24WMFgrW8Zj")
+      .createHmac("sha256", "key_secret")
       .update(razorpay_order_id + "|" + razorpay_payment_id)
       .digest("hex");
 
