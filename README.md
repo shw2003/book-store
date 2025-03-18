@@ -29,29 +29,6 @@ This project is a **MERN Stack CRUD Application** that allows users to **add, up
 
 ---
 
-## 🔹 Folder Structure
-```
-/backend
-│-- connection/conn.js       # MongoDB connection setup
-│-- models/book.models.js    # Mongoose Schema for Books
-│-- routes/bookRoutes.js     # CRUD API routes
-│-- routes/paymentRoutes.js  # Payment API routes (Razorpay)
-│-- app.js                   # Express server configuration
-│-- package.json             # Backend dependencies
-
-/frontend
-│-- src
-│   │-- components
-│   │   │-- Books.jsx        # Fetches and displays books
-│   │   │-- BooksSection.jsx # UI for book cards with Buy Now
-│   │   │-- AddBooks.jsx     # Form to add/update books
-│   │   │-- PaymentButton.jsx # Razorpay Payment integration
-│   │   │-- ThankYou.jsx     # Success Page after payment
-│   │   │-- Failure.jsx      # Failure Page if payment fails
-│   │-- App.js               # Main React component
-│-- package.json             # Frontend dependencies
-```
-
 ---
 
 ## 🔹 How It Works
@@ -69,42 +46,7 @@ cd frontend
 npm install
 npm start
 ```
-
 ---
-
-## 🔹 Payment Flow
-1. **User clicks "Buy Now"** → Calls the **create-order** API.
-2. **Razorpay opens payment gateway** → User enters payment details.
-3. **Upon successful payment**:
-   - The backend **verifies the payment**.
-   - If valid → Redirects to **Thank You page**.
-   - If failed → Redirects to **Payment Failed page**.
-
----
-
-## 🔹 API Endpoints (Backend)
-
-### 📖 Book Management
-| Method | Endpoint                | Description       |
-|--------|-------------------------|-------------------|
-| GET    | `/api/v1/getAllBooks`   | Get all books    |
-| POST   | `/api/v1/add`           | Add a new book   |
-| PUT    | `/api/v1/update/:id`    | Update a book    |
-| DELETE | `/api/v1/delete/:id`    | Delete a book    |
-
-### 💳 Payment Integration
-| Method | Endpoint                     | Description            |
-|--------|------------------------------|------------------------|
-| POST   | `/api/payment/create-order`  | Create Razorpay order |
-| POST   | `/api/payment/verify-payment`| Verify Razorpay payment |
-
----
-
-## 🔹 Future Enhancements
-- 🚀 **User Authentication** – Add login/logout functionality.
-- 🚀 **Image Uploads** – Allow users to upload book images.
-- 🚀 **Search & Filter** – Improve the browsing experience.
-- 🚀 **Order History** – Track user purchases.
 
 ---
 
