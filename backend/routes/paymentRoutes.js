@@ -4,19 +4,19 @@ const crypto = require("crypto");
 
 const router = express.Router();
 
-// Initialize Razorpay instance
+
 const razorpay = new Razorpay({
   key_id: "rzp_test_RwAjwTsADH3ZKy",
   key_secret: "OftLUMb8ocexj24WMFgrW8Zj",
 });
 
-// Route to create an order
+
 router.post("/create-order", async (req, res) => {
   try {
     const { amount } = req.body;
 
     const options = {
-      amount: amount * 100, // Convert to paise
+      amount: amount * 100, 
       currency: "INR",
       receipt: "order_rcptid_" + new Date().getTime(),
     };
@@ -29,7 +29,7 @@ router.post("/create-order", async (req, res) => {
   }
 });
 
-// Route to verify payment
+
 router.post("/verify-payment", (req, res) => {
   try {
     const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
