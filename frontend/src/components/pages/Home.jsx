@@ -2,6 +2,7 @@ import React from "react";
 import "../../App.css";
 import "./Home.css";
 import { Link } from "react-router-dom";
+import PaymentButton from "../PaymentButton.jsx";
 
 const Home = () => {
   return (

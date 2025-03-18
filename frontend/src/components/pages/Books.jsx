@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import BooksSection from "./BooksSection";
+import PaymentButton from "../PaymentButton.jsx"; // Import PaymentButton
 import { Spinner } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const Books = () => {
   const [data, setData] = useState(null);
+  const navigate = useNavigate(); // Redirect Hook
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -18,12 +21,60 @@ const Books = () => {
     fetchBooks();
   }, []);
 
+  // Function to handle "Buy Now" button click
+  const handleBuyNow = async (amount) => {
+    try {
+      const { data } = await axios.post(
+        "http://localhost:1000/api/payment/create-order",
+        { amount }
+      );
+
+      if (!data.success) {
+        alert("Order creation failed!");
+        return;
+      }
+
+      const { id: order_id, amount: order_amount, currency } = data.order;
+
+      const options = {
+        key: "rzp_test_RwAjwTsADH3ZKy", // Replace with actual Razorpay Key ID
+        amount: order_amount,
+        currency,
+        name: "Book Store",
+        description: "Book Purchase Payment",
+        order_id,
+        handler: async (response) => {
+          const verifyRes = await axios.post(
+            "http://localhost:1000/api/payment/verify-payment",
+            {
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+            }
+          );
+
+          if (verifyRes.data.success) {
+            navigate("/thank-you"); // Redirect to Thank You Page
+          } else {
+            navigate("/payment-failed"); // Redirect to Failure Page
+          }
+        },
+        theme: { color: "#3399cc" },
+      };
+
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+    } catch (error) {
+      console.error("Payment Error:", error);
+      alert("Something went wrong!");
+    }
+  };
+
   return (
     <div
       className="bg-dark text-white"
       style={{ minHeight: "90vh", padding: "30px 0" }}
     >
-      {/* Page Heading */}
       <div className="text-center mb-4">
         <h2 className="fw-bold" style={{ color: "#f8f9fa" }}>
           📚 Book Collection
@@ -33,16 +84,18 @@ const Books = () => {
         </p>
       </div>
 
-      {/* Books Display */}
       <div className="container">
         {data ? (
-          <BooksSection dataBook={data} setDataBook={setData} />
+          <BooksSection
+            dataBook={data}
+            setDataBook={setData}
+            handleBuyNow={handleBuyNow}
+          />
         ) : (
           <div
             className="d-flex justify-content-center align-items-center"
             style={{ height: "60vh" }}
           >
-            {/* Fancy Loading Spinner */}
             <div className="text-center">
               <Spinner animation="border" variant="light" />
               <p className="mt-3">Fetching Books...</p>

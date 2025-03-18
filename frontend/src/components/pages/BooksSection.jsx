@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const BooksSection = ({ dataBook, setDataBook }) => {
+const BooksSection = ({ dataBook, setDataBook, handleBuyNow }) => {
   const [expanded, setExpanded] = useState({});
   const navigate = useNavigate();
 
@@ -73,6 +73,13 @@ const BooksSection = ({ dataBook, setDataBook }) => {
                     onClick={() => handleDelete(book._id)}
                   >
                     Delete
+                  </button>
+                  {/* Buy Now Button */}
+                  <button
+                    variant="primary"
+                    onClick={() => handleBuyNow(book.price)}
+                  >
+                    Buy Now
                   </button>
                 </div>
               </div>

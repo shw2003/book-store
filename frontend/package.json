@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^1.8.3",
     "lodash": "^4.17.21",
+    "razorpay": "^2.9.6",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.9",
     "react-dom": "^19.0.0",
