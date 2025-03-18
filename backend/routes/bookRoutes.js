@@ -6,7 +6,7 @@ router.post("/add", async (req, res) => {
   try {
     const data = req.body;
     const newBook = new bookModel(data);
-    //send to db
+    
     await newBook.save().then(() => {
       res.status(200).json({ message: "BOOK ADDED SUCCESSFULLY" });
     });
@@ -78,13 +78,13 @@ router.delete("/delete/:id", async (req, res) => {
 
 router.patch("/update/:id", async (req, res) => {
   try {
-    const bookId = req.params.id; // Get book ID from URL
-    const updatedData = req.body; // Get only the fields to update
+    const bookId = req.params.id; 
+    const updatedData = req.body; 
 
     const updatedBook = await bookModel.findByIdAndUpdate(
       bookId,
-      { $set: updatedData }, // Use $set to update only the provided fields
-      { new: true, runValidators: true } // Return updated document & apply validation
+      { $set: updatedData }, 
+      { new: true, runValidators: true } 
     );
 
     if (!updatedBook) {
