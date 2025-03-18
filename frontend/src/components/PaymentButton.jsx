@@ -21,7 +21,7 @@ const PaymentButton = ({ amount }) => {
 
       // Step 2: Open Razorpay Payment Gateway
       const options = {
-        key: "rzp_test_RwAjwTsADH3ZKy", // Replace with Razorpay Key ID
+        key: "key__id", // Replace with Razorpay Key ID
         amount: order_amount,
         currency,
         name: "Book Store",
