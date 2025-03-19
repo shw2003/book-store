@@ -1,44 +1,45 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../components/context/AuthContext"; // ✅ Ensure correct import
 
 const Navbar = () => {
+  const { token, logout } = useContext(AuthContext); // ✅ Use logout instead of setToken
+
   return (
-    <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div className="container">
-          <Link className="navbar-brand" to="/">
-            Book Store
-          </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <Link className="nav-item nav-link active text-white" to="/">
-                Home
-              </Link>
-              <Link className="nav-item nav-link active text-white" to="/books">
-                BOOKS
-              </Link>
-              <Link
-                className="nav-item nav-link active text-white"
-                to="/addBooks"
-              >
-                Add Books
-              </Link>
-            </ul>
-          </div>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div className="container">
+        <Link className="navbar-brand" to="/">
+          Book Store
+        </Link>
+        <div className="collapse navbar-collapse">
+          <ul className="navbar-nav ms-auto">
+            {!token ? (
+              <>
+                <Link className="nav-link" to="/signin">
+                  Sign In
+                </Link>
+                <Link className="nav-link" to="/signup">
+                  Sign Up
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link className="nav-link" to="/books">
+                  Books
+                </Link>
+                <Link className="nav-link" to="/addBooks">
+                  Add Books
+                </Link>
+                <button className="btn btn-danger" onClick={logout}>
+                  Logout
+                </button>{" "}
+                {/* ✅ Call logout instead */}
+              </>
+            )}
+          </ul>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   );
 };
 

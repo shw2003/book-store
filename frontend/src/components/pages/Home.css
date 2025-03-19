@@ -10,18 +10,16 @@
   text-align: center;
 }
 
-/* Overlay for Better Text Visibility */
 .overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6); /* Dark Overlay */
+  background: rgba(0, 0, 0, 0.6);
   z-index: 1;
 }
 
-/* Text Content */
 .container {
   position: relative;
   z-index: 2;
@@ -33,7 +31,6 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* Stylish Button */
 .custom-btn {
   background: linear-gradient(90deg, #ff512f, #dd2476);
   border: none;

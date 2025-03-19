@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import BooksSection from "./BooksSection";
-import PaymentButton from "../PaymentButton.jsx"; // Import PaymentButton
+import PaymentButton from "../PaymentButton.jsx";
 import { Spinner } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 const Books = () => {
   const [data, setData] = useState(null);
-  const navigate = useNavigate(); // Redirect Hook
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -21,7 +21,6 @@ const Books = () => {
     fetchBooks();
   }, []);
 
-  // Function to handle "Buy Now" button click
   const handleBuyNow = async (amount) => {
     try {
       const { data } = await axios.post(
@@ -37,7 +36,7 @@ const Books = () => {
       const { id: order_id, amount: order_amount, currency } = data.order;
 
       const options = {
-        key: "rzp_test_RwAjwTsADH3ZKy", // Replace with actual Razorpay Key ID
+        key: "rzp_test_RwAjwTsADH3ZKy",
         amount: order_amount,
         currency,
         name: "Book Store",
@@ -54,9 +53,9 @@ const Books = () => {
           );
 
           if (verifyRes.data.success) {
-            navigate("/thank-you"); // Redirect to Thank You Page
+            navigate("/thank-you");
           } else {
-            navigate("/payment-failed"); // Redirect to Failure Page
+            navigate("/payment-failed");
           }
         },
         theme: { color: "#3399cc" },

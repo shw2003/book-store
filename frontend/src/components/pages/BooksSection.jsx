@@ -13,7 +13,6 @@ const BooksSection = ({ dataBook, setDataBook, handleBuyNow }) => {
       await axios.delete(`http://localhost:1000/api/v1/delete/${id}`);
       alert("Book deleted successfully");
 
-      //update the state to remove the delted book
       setDataBook((prevBook) => prevBook.filter((book) => book._id !== id));
     } catch (error) {
       console.log("Error in deleting Book:", error);
@@ -74,7 +73,7 @@ const BooksSection = ({ dataBook, setDataBook, handleBuyNow }) => {
                   >
                     Delete
                   </button>
-                  {/* Buy Now Button */}
+
                   <button
                     variant="primary"
                     onClick={() => handleBuyNow(book.price)}
