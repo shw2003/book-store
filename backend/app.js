@@ -14,7 +14,7 @@ app.use(express.json());
 // });
 
 app.use("/api/v1", bookRoute);
-app.use("/api/payment", paymentRoute); // Add payment route
+app.use("/api/payment", paymentRoute);
 app.use("/api/auth", authRoutes); // ✅ Correctly using the auth routes
 
 app.listen(1000, () => {

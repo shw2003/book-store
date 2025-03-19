@@ -6,7 +6,7 @@ router.post("/add", async (req, res) => {
   try {
     const data = req.body;
     const newBook = new bookModel(data);
-    //send to db
+    
     await newBook.save().then(() => {
       res.status(200).json({ message: "BOOK ADDED SUCCESSFULLY" });
     });
